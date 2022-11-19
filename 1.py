@@ -2,14 +2,14 @@ import pygsheets
 
 c = pygsheets.authorize(client_secret='client_secret.json')
 
-open_sheet = c.open('Новая форма (Ответы)')
+open_sheet = c.open('Volunteers form')
 wks = open_sheet[0]
+cities = set()
 
-values_mat = wks.get_all_values(returnas='matrix')
+i = 2
 
-# print(values_mat)
+while wks[i][4]:
+    cities.add(wks[i][4])
+    i +=1
 
-class Volunteer(name):
-
-    def __init__(self):
-        self.name = name
+print(cities)
