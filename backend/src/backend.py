@@ -1,9 +1,7 @@
-import json
 
 from flask import Flask
 from flask_restful import Resource, Api, reqparse
 from repository import Repository
-from volunteer import Volunteer
 
 
 app = Flask("my_server")
@@ -11,13 +9,13 @@ rest_api = Api(app)
 parser = reqparse.RequestParser()
 parser.add_argument('city', type=str, help='', location='args')
 
-repository = Repository(["Warsaw", "Krakow"], [Volunteer("A", "Tokyo"), Volunteer("B", "Warsaw")])
+repository = Repository()
 
 
 class Cities(Resource):
 
     def get(self):
-        return repository.cities
+        return repository.get_all_cities()
 
 
 class Volunteers(Resource):
