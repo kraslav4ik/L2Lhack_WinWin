@@ -28,7 +28,6 @@ class TableTools:
     def __init__(self):
         c = pygsheets.authorize(client_secret='./backend/data/client_secret.json')
         open_sheet = c.open('Volunteers form')
-        # json = open_sheet.to_json()
         self.wks = open_sheet.sheet1
         self.cities = [None, []]
         self.volunteers = [None, []]
@@ -43,14 +42,10 @@ class TableTools:
         return self.fetch_all_cities()
 
     def fetch_all_cities(self) -> List[str]:
-        city_string = '---'
-        i = START_ROW
+
         cities = set()
-        while city_string:
-            city_string = self.wks.cell(f'{CITY_COLUMN}{i}').value
-            if city_string:
-                cities.add(city_string)
-            i += 1
+        for v in self.get_all_volunteers():
+            cities.add(v.city)
         return list(cities)
 
     def get_volunteers_by_city(self, city: Optional[str]):
@@ -58,26 +53,6 @@ class TableTools:
             return self.get_all_volunteers()
         return [v for v in self.get_all_volunteers() if v.city == city]
 
-
-    def create_volunteer(self, row: int) -> Optional[Volunteer]:
-        help_options = []
-        help_options_from_table = self.wks.cell(f'{HELP_OPTIONS_COLUMN}{row}').value
-        for option in HELP_OPTIONS:
-            if help_options_from_table.find(option) != -1:
-                help_options.append(option)
-        sex = "Not specified"
-        sex_value = self.wks.cell(f'{SEX_COLUMN}{row}').value
-        if 'Ж' in sex_value or 'F' in sex_value or 'w' in sex_value:
-            sex = "FEMALE"
-        if 'М' in sex_value or 'M' in sex_value:
-            sex = "MALE"
-        if self.wks.cell(f'{CHECK_COLUMN}{row}').value == "FALSE":
-            return
-        return Volunteer(
-            self.wks.cell(f'{NAME_COLUMN}{row}').value, self.wks.cell(f'{CITY_COLUMN}{row}').value,
-            self.wks.cell(f'{EMAIL_COLUMN}{row}').value, self.wks.cell(f'{TELEGRAM_COLUMN}{row}').value,
-            help_options, self.wks.cell(f'{DESCRIPTION_COLUMN}{row}').value, sex,
-            self.wks.cell(f'{AGE_COLUMN}{row}').value)
 
     def get_all_volunteers(self):
         now = datetime.datetime.now()
@@ -102,7 +77,6 @@ class TableTools:
                     continue
                 if row[10] == 'FALSE':
                     continue
-                # print(row)
                 help_options_from_table = row[6]
                 help_options = []
                 for option in HELP_OPTIONS:
