@@ -15,5 +15,7 @@ class Repository:
     #     return [v.to_json() for v in self.volunteers]
 
     def get_volunteers_by_city(self, city) -> List[Volunteer]:
-        return [v.to_json() for v in self.table_tools.get_volunteers_by_city(city)]
+        res = [v.to_json() for v in self.table_tools.get_volunteers_by_city(city)]
+        # print(res)
+        return res
 

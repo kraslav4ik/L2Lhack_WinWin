@@ -4,6 +4,8 @@ from flask_restful import Resource, Api, reqparse
 from repository import Repository
 
 
+
+
 app = Flask("my_server")
 rest_api = Api(app)
 parser = reqparse.RequestParser()
@@ -23,7 +25,9 @@ class Volunteers(Resource):
     def get(self):
         data = parser.parse_args()
         if "city" in data:
-            return repository.get_volunteers_by_city(data.get("city"))
+            city = data.get("city")
+            volunteers = repository.get_volunteers_by_city(city)
+            return volunteers
 
 
 if __name__ == "__main__":
