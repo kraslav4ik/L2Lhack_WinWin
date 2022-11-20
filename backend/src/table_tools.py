@@ -1,4 +1,4 @@
-from typing import List
+from typing import List, Optional
 from volunteer import Volunteer
 from constants import *
 
@@ -13,13 +13,16 @@ EMAIL_COLUMN = 'C'
 TELEGRAM_COLUMN = 'F'
 HELP_OPTIONS_COLUMN = 'G'
 DESCRIPTION_COLUMN = 'H'
+SEX_COLUMN = 'I'
+AGE_COLUMN = 'J'
+CHECK_COLUMN = 'K'
 START_ROW = 2
 
 
 class TableTools:
 
     def __init__(self):
-        c = pygsheets.authorize(client_secret='../data/client_secret.json')
+        c = pygsheets.authorize(client_secret='./backend/data/client_secret.json')
         open_sheet = c.open('Volunteers form')
         self.wks = open_sheet.sheet1
 
@@ -45,19 +48,26 @@ class TableTools:
             i += 1
         volunteers = []
         for row in suitable_rows:
-            volunteers.append(self.create_volunteer(row))
+            volunteer = self.create_volunteer(row)
+            if volunteer:
+                volunteers.append(volunteer)
         return volunteers
 
-    def create_volunteer(self, row: int) -> Volunteer:
+    def create_volunteer(self, row: int) -> Optional[Volunteer]:
         help_options = []
         help_options_from_table = self.wks.cell(f'{HELP_OPTIONS_COLUMN}{row}').value
         for option in HELP_OPTIONS:
             if help_options_from_table.find(option) != -1:
                 help_options.append(option)
+        sex = "FEMALE"
+        if 'М' in sex or 'M' in self.wks.cell(f'{SEX_COLUMN}{row}').value:
+            sex = "MALE"
+        if self.wks.cell(f'{CHECK_COLUMN}{row}').value == "FALSE":
+            return
         return Volunteer(
             self.wks.cell(f'{NAME_COLUMN}{row}').value, self.wks.cell(f'{CITY_COLUMN}{row}').value,
             self.wks.cell(f'{EMAIL_COLUMN}{row}').value, self.wks.cell(f'{TELEGRAM_COLUMN}{row}').value,
-            help_options, self.wks.cell(f'{DESCRIPTION_COLUMN}{row}').value
-        )
+            help_options, self.wks.cell(f'{DESCRIPTION_COLUMN}{row}').value, sex,
+            self.wks.cell(f'{AGE_COLUMN}{row}').value)
 
 

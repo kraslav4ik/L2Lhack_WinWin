@@ -22,7 +22,6 @@ class Volunteers(Resource):
 
     def get(self):
         data = parser.parse_args()
-        print(data)
         if "city" in data:
             return repository.get_volunteers_by_city(data.get("city"))
 
