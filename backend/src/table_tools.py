@@ -59,8 +59,11 @@ class TableTools:
         for option in HELP_OPTIONS:
             if help_options_from_table.find(option) != -1:
                 help_options.append(option)
-        sex = "FEMALE"
-        if 'М' in sex or 'M' in self.wks.cell(f'{SEX_COLUMN}{row}').value:
+        sex = "Not specified"
+        sex_value = self.wks.cell(f'{SEX_COLUMN}{row}').value
+        if 'Ж' in sex_value or 'F' in sex_value or 'w' in sex_value:
+            sex = "FEMALE"
+        if 'М' in sex_value or 'M' in sex_value:
             sex = "MALE"
         if self.wks.cell(f'{CHECK_COLUMN}{row}').value == "FALSE":
             return
