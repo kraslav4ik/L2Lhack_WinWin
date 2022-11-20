@@ -41,6 +41,8 @@ class TableTools:
         city_string = '---'
         i = START_ROW
         suitable_rows = []
+        if city is None:
+            return self.get_all_volunteers()
         while city_string:
             city_string = self.wks.cell(f'{CITY_COLUMN}{i}').value
             if city_string and city_string == city:
@@ -72,5 +74,16 @@ class TableTools:
             self.wks.cell(f'{EMAIL_COLUMN}{row}').value, self.wks.cell(f'{TELEGRAM_COLUMN}{row}').value,
             help_options, self.wks.cell(f'{DESCRIPTION_COLUMN}{row}').value, sex,
             self.wks.cell(f'{AGE_COLUMN}{row}').value)
+
+    def get_all_volunteers(self):
+        i = START_ROW
+        city_string = '---'
+        volunteers = []
+        while city_string:
+            city_string = self.wks.cell(f'{CITY_COLUMN}{i}').value
+            if city_string:
+                volunteers.append(self.create_volunteer(i))
+            i += 1
+        return volunteers
 
 
