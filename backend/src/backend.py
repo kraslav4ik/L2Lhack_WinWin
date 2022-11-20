@@ -29,5 +29,5 @@ class Volunteers(Resource):
 if __name__ == "__main__":
     rest_api.add_resource(Cities, '/api/getCities')
     rest_api.add_resource(Volunteers, '/api/getVolunteers')
-    app.run(host="localhost", port=8888, debug=True)
+    app.run(host="0000", port=8888, debug=True)
 
