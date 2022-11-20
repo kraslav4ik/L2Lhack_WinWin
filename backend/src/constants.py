@@ -1,11 +1,12 @@
-LIFE = 'I can tell refugees, how common problems (housing search, opening the bank account, job search) are resolved in my city/country'
-LEGAL = 'I can tell refugees about ways of legalisation in my city/country'
-JOB = 'I can advise in my field (like layer, software engineer, etc.)'
-BED = 'I can provide the short-term accomondation'
-# CHAT = 'Присоединиться к чату «Ковчега» по вашей стране и в свободное время отвечать на вопросы'
-GUIDE = 'I can make a relocation guide or organise a webinar about questions connected to relocation process'
-LEARN = 'I can teach (language, how to use cryptocurrencies, etc.)'
-# EXPERIENCE = 'Рассказать про ваш опыт эмиграции в канале «Ковчега»'
-WORK = 'I can offer a remote job or job with relocation for those, who want to relocate'
-# DONAT = 'Помочь проекту финансово (подробности на сайте antiwarcommittee.info/kovcheg)'
-PSYCHO = 'I am psychologist and can organise consultations'
+
+
+COMMON = 'Сommon problems'
+LEGAL = 'Ways of legalisation'
+SHELTER = 'Shelter options'
+GUIDE = 'Make a relocation guide'
+JOB = 'Job search'
+PSYCHO = 'Psychological consultation'
+LANGUAGE = 'Teach language'
+BANK = 'Open foreign bank account'
+RENT = 'Rent search'
+

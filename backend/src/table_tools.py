@@ -6,7 +6,7 @@ import csv
 
 import pygsheets
 
-HELP_OPTIONS = [LIFE, LEGAL, JOB, BED, GUIDE, LEARN, WORK, PSYCHO]
+HELP_OPTIONS = [COMMON, LEGAL, SHELTER, GUIDE, JOB, PSYCHO, LANGUAGE, BANK, RENT]
 
 
 CITY_COLUMN = 'E'
@@ -83,12 +83,11 @@ class TableTools:
                     if help_options_from_table.find(option) != -1:
                         help_options.append(option)
                 sex = "Not specified"
-                sex_value = row[7]
+                sex_value = row[8]
                 if 'Ж' in sex_value or 'F' in sex_value or 'w' in sex_value:
                     sex = "FEMALE"
                 if 'М' in sex_value or 'M' in sex_value:
                     sex = "MALE"
-                volunteers.append(Volunteer(row[3], row[4], row[2], row[5], help_options, sex, row[8], row[9]))
+                volunteers.append(Volunteer(row[3], row[4], row[2], row[5], help_options, row[7], sex, row[9]))
             return volunteers
-            # print(volunteers)
 
