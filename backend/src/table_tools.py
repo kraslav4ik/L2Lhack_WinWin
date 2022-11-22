@@ -8,18 +8,6 @@ import pygsheets
 
 HELP_OPTIONS = [COMMON, LEGAL, SHELTER, GUIDE, JOB, PSYCHO, LANGUAGE, BANK, RENT]
 
-
-CITY_COLUMN = 'E'
-NAME_COLUMN = 'D'
-EMAIL_COLUMN = 'C'
-TELEGRAM_COLUMN = 'F'
-HELP_OPTIONS_COLUMN = 'G'
-DESCRIPTION_COLUMN = 'H'
-SEX_COLUMN = 'I'
-AGE_COLUMN = 'J'
-CHECK_COLUMN = 'K'
-START_ROW = 10
-
 use_cache = False
 
 
@@ -69,11 +57,10 @@ class TableTools:
         filename = 'table_data'
         self.wks.export(pygsheets.ExportType.CSV, filename,  filepath)
         with open(filepath + filename + '.csv', newline='') as csvfile:
-            spamreader = csv.reader(csvfile, delimiter=',')
+            reader = csv.reader(csvfile, delimiter=',')
             volunteers = []
-            for i, row in enumerate(spamreader):
-                # print(row)
-                if i == 0 or row[0] == '':
+            for i, row in enumerate(reader):
+                if i == 0 or not row[0]:
                     continue
                 if row[10] == 'FALSE':
                     continue

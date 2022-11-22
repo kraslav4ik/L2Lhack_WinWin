@@ -1,5 +1,3 @@
-
-
 COMMON = 'Сommon problems'
 LEGAL = 'Ways of legalisation'
 SHELTER = 'Shelter options'

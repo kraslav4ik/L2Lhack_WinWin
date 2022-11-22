@@ -1,9 +1,6 @@
-
 from flask import Flask
 from flask_restful import Resource, Api, reqparse
 from repository import Repository
-
-
 
 
 app = Flask("my_server")

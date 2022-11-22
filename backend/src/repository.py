@@ -11,11 +11,6 @@ class Repository:
     def get_all_cities(self) -> List[str]:
         return self.table_tools.get_all_cities()
 
-    # def get_all_volunteers(self) -> List[Volunteer]:
-    #     return [v.to_json() for v in self.volunteers]
-
     def get_volunteers_by_city(self, city) -> List[Volunteer]:
-        res = [v.to_json() for v in self.table_tools.get_volunteers_by_city(city)]
-        # print(res)
-        return res
+        return [v.to_json() for v in self.table_tools.get_volunteers_by_city(city)]
 
