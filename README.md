@@ -31,3 +31,5 @@ L2Lhack_WinWin/> pip install requirements.txt
 L2Lhack_WinWin/> python backend.py
 ```
 
+After launching, authorize your google account, following the instructions in terminal.
+
