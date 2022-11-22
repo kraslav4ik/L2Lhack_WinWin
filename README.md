@@ -1,8 +1,9 @@
 # L2Lhack_WinWin
 
-Backend part of "Helpee" - android application to help refugees easily connect with volunteers. Small project completed in a team during L2L hackathon
+Backend part of "Helpee" - android application to help refugees easily connect with volunteers. Small project completed in a team during L2L Hackathon
 
-![image1](https://github.com/kraslav4ik/L2Lhack_WinWin/blob/backend-dev/pictures/photo_2022-11-22_13-21-50.jpg) 
+<img src="[http://....jpg" width="200](https://github.com/kraslav4ik/L2Lhack_WinWin/blob/backend-dev/pictures/photo_2022-11-22_13-21-50.jpg)" height="500" width="200"/>
+
 
 
 ## Launch
