@@ -1,9 +1,8 @@
 # L2Lhack_WinWin
 
-Backend part.
+Backend part of "Helpee" - android application to help refugees easily connect with volunteers. Small project completed in a team during L2L hackathon
 
 ![image1](https://github.com/kraslav4ik/L2Lhack_WinWin/blob/backend-dev/pictures/photo_2022-11-22_13-21-50.jpg) 
-![image2](https://github.com/kraslav4ik/L2Lhack_WinWin/blob/backend-dev/pictures/photo_2022-11-22_13-21-57.jpg)
 
 
 ## Launch
@@ -27,3 +26,5 @@ L2Lhack_WinWin/> pip install requirements.txt
 L2Lhack_WinWin/> pip install requirements.txt
 L2Lhack_WinWin/> python backend.py
 ```
+
+![image2](https://github.com/kraslav4ik/L2Lhack_WinWin/blob/backend-dev/pictures/photo_2022-11-22_13-21-57.jpg)
