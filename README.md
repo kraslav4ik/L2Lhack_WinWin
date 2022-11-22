@@ -13,7 +13,7 @@ Backend part of "Helpee" - android application to help refugees easily connect w
 
 Python 3.8 +
 
-Add client_secret.json file to data dir
+Add client_secret.json file to data dir (check https://pygsheets.readthedocs.io/en/stable/authorization.html)
 
 ```bash
 L2Lhack_WinWin/> cd ./backend
